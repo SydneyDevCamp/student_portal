@@ -1,0 +1,32 @@
+<h1>Prework Modules</h1>
+
+<table class="table">
+  <tr>
+    <th>Order</th>
+    <th>Name</th>
+    <th>Module type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @prework_modules.each do |prework_module| %>
+  <tr>
+    <td><%= prework_module.order %></td>
+    <td><%= prework_module.name %></td>
+    <td><%= prework_module.module_type %></td>
+    <td>
+        <%= link_to "add question", new_prework_module_prework_question_path(prework_module), :class => "btn" %> 
+        <% if prework_module.prework_questions.count > 0 %>
+            <%= link_to 'questions', prework_module_prework_questions_path(prework_module), :class => 'btn' %>
+        <% end %>
+    </td>
+    <td><%= link_to 'Edit', edit_prework_module_path(prework_module) %></td>
+    <td><%= link_to 'Destroy', prework_module, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Prework module', new_prework_module_path %>

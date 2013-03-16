@@ -1,0 +1,8 @@
+<%= simple_form_for [@module, @prework_question] do |f| %>
+  <%= f.error_notification %>
+
+    <%= f.input :order %>
+    <%= f.input :question, :input_html => { :rows => 10, :class => "span7" } %>
+
+    <%= f.button :submit %>
+<% end %>

@@ -1,0 +1,27 @@
+<h1>Listing prework_answers</h1>
+
+<table>
+  <tr>
+    <th>Prework question</th>
+    <th>User</th>
+    <th>Answer</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @prework_answers.each do |prework_answer| %>
+  <tr>
+    <td><%= prework_answer.prework_question %></td>
+    <td><%= prework_answer.user %></td>
+    <td><%= prework_answer.answer %></td>
+    <td><%= link_to 'Show', prework_answer %></td>
+    <td><%= link_to 'Edit', edit_prework_answer_path(prework_answer) %></td>
+    <td><%= link_to 'Destroy', prework_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Prework answer', new_prework_answer_path %>

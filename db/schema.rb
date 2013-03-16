@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315035619) do
+ActiveRecord::Schema.define(:version => 20130316095852) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -41,6 +41,38 @@ ActiveRecord::Schema.define(:version => 20130315035619) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "prework_answers", :force => true do |t|
+    t.integer  "prework_question_id"
+    t.integer  "user_id"
+    t.text     "answer"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "prework_answers", ["prework_question_id"], :name => "index_prework_answers_on_prework_question_id"
+  add_index "prework_answers", ["user_id"], :name => "index_prework_answers_on_user_id"
+
+  create_table "prework_modules", :force => true do |t|
+    t.integer  "order"
+    t.string   "name"
+    t.text     "intro"
+    t.text     "resources"
+    t.string   "forum_link"
+    t.string   "module_type"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "prework_questions", :force => true do |t|
+    t.integer  "order"
+    t.text     "question"
+    t.integer  "prework_module_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "prework_questions", ["prework_module_id"], :name => "index_prework_questions_on_prework_module_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

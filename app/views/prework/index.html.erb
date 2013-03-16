@@ -1,6 +1,11 @@
 <h1>Prework</h1>
-
+<% if current_user.has_role? :admin %>
+  <%= link_to 'Add module', new_prework_module_path, :class => 'btn' %>
+  <%= link_to 'Module list', prework_modules_path, :class => 'btn' %>
+  <br>
+<% end %>
 <div class="well">
+<h2>Hi <%= current_user.username %></h2>
 <h2>Welcome to Sydney Dev Camp!</h2>
 <br>
 <p><b>I promise you, you will have a great time and learn a lot over the next few months.</b></p>
@@ -35,24 +40,39 @@
 <h3>Modules</h3>
 <p>The prework is broken up into the following sections.</p>
 
+
 <p><i>Knowledge</i></p>
-<ol>
-  <li><a href="https://docs.google.com/forms/d/1ULv2XXECJm5dMaACvwx2u8iS2RxsDyr_Mho-9Bkij5I/viewform" target="_blank">The computer</a></li>
-  <li>The Internet</li>
-  <li>Software</li>
-  <li>Web application development</li>
-  <li>Ruby on Rails</li>
-  <li>eCommerce</li>
-  <li>Tech startups</li>
-</ol>
+
+  <% if @prework_modules.count > 0 %>
+  <table class="table">
+    <tr>
+      <th>Module name</th>
+      <th></th>
+    </tr>
+    <% @prework_modules.each do |pw_module| %>
+      <% if pw_module.module_type == 'knowledge' %>
+      <tr>
+        <td><%= pw_module.name %></td>
+        <td>
+          <a href="#" class="btn btn-success">start module</a>
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+  </table>
+  <% end %>
+
+
 
 <p><i>Skills</i></p>
 <ol>
-  <li>Computer skills</li>
-  <li>Research skills</li>
-  <li>Web skills</li>
-  <li>Software skills</li>
-  <li>Programming skills</li>
+  <% if @prework_modules.count > 0 %>
+    <% @prework_modules.each do |pw_module| %>
+      <% if pw_module.module_type == 'skill' %>
+        <li><%= pw_module.name %></li>
+      <% end %>
+    <% end %>
+  <% end %>
 </ol>
 <br>
 <h3>Help</h3>

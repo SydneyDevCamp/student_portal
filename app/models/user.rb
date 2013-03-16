@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   has_many :topics, :dependent => :destroy
   has_many :posts, :dependent => :destroy
-  has_many :preworks, :dependent => :destroy
+  has_many :prework_answers, :dependent => :destroy
   
   
 end

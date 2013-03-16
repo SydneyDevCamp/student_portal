@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Order:</b>
+  <%= @prework_question.order %>
+</p>
+
+<p>
+  <b>Question:</b>
+  <%= @prework_question.question %>
+</p>
+
+<p>
+  <b>Prework module:</b>
+  <%= @prework_question.prework_module %>
+</p>
+
+
+<%= link_to 'Edit', edit_prework_question_path(@prework_question) %> |
+<%= link_to 'Back', prework_questions_path %>
