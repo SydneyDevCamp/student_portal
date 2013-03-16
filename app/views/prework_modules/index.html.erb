@@ -1,0 +1,31 @@
+<h1>Listing prework_modules</h1>
+
+<table>
+  <tr>
+    <th>Order</th>
+    <th>Name</th>
+    <th>Intro</th>
+    <th>Resources</th>
+    <th>Forum link</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @prework_modules.each do |prework_module| %>
+  <tr>
+    <td><%= prework_module.order %></td>
+    <td><%= prework_module.name %></td>
+    <td><%= prework_module.intro %></td>
+    <td><%= prework_module.resources %></td>
+    <td><%= prework_module.forum_link %></td>
+    <td><%= link_to 'Show', prework_module %></td>
+    <td><%= link_to 'Edit', edit_prework_module_path(prework_module) %></td>
+    <td><%= link_to 'Destroy', prework_module, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Prework module', new_prework_module_path %>

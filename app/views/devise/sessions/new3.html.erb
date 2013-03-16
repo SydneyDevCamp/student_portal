@@ -1,0 +1,22 @@
+<br>
+<div class="login">
+  <div class="login-screen">
+    <div class="login-icon">
+      <%= image_tag('FB-logo.png') %>
+    </div>
+
+    <div class="login-form">
+      <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+          <%= f.input :username, :label => "", :placeholder => "Enter your username or email", :input_html => { :id => "login-name" }, label_html: { :class => 'login-field-icon fui-man-16' } , :autofocus => true, :class => "login-field" %>
+
+          <%= f.input :password, :label => "", :placeholder => "Password", :input_html => { :id => "login-pass" }, label_html: { :class => 'login-field-icon fui-lock-16' } , :autofocus => true %>
+        
+          <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+
+        <%= f.button :submit, "Login", :class => 'btn-primary btn-large btn-block' %>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
+

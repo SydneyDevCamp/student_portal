@@ -1,0 +1,35 @@
+<%= link_to "Back to Forum", forum_path(@topic.forum) %>
+<h2><%= @topic.title %></h2>
+      <%= link_to "Edit", edit_topic_path(@topic) %>
+      <%= link_to "Delete", @topic, :confirm => "Are you sure?", :method => :delete %>
+      <%= link_to @topic.sticky ? "Unstick" : "Sticky", {:controller => 'topics', :action => 'update', :topic => {:sticky => @topic.sticky ? "false" : "true" }}, :method => :put %>
+      <%= link_to @topic.locked ? "Unlock" : "Lock", {:controller => 'topics', :action => 'update', :topic => {:locked => @topic.locked ? "false" : "true" }}, :method => :put %>
+   
+    <table class="table">
+      <% @topic.posts.each do |post| %>
+      <tr>
+        <td class="post_author" rowspan="2">
+          <h3><%= post.user.username %></h3>
+          <span class="avatar"><!-- This space reserved for Avatar --></span>
+            <br />
+            Posts <%= post.user.posts.size %><br />
+            Registered <%= post.user.created_at.strftime("%A, %e %b %Y") %><br />
+          
+        </td>
+        <td>
+         Posted <%= post.created_at.strftime("%I:%M:%P on %A, %e %b %Y") %>
+         <div class="pull-right">
+            <%= link_to "Reply", new_topic_post_path(@topic), :class => 'btn btn-info btn-small' %>
+            <%= link_to "Quote", new_topic_post_path(@topic, :quote => post), :class => 'btn btn-info btn-small' %>
+            <%= link_to "Edit", edit_post_path(post), :class => 'btn btn-warning btn-small' %>
+            <%= link_to "Delete", post, :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-danger btn-small' %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= simple_format(auto_link(post.body)) %>
+        </td>
+      </tr>
+      <% end %>
+    </table>

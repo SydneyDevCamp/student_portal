@@ -11,7 +11,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315023533) do
+ActiveRecord::Schema.define(:version => 20130316085308) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "title"
+    t.boolean  "state",      :default => true
+    t.integer  "position",   :default => 0
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "forums", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "state",        :default => true
+    t.integer  "topics_count", :default => 0
+    t.integer  "posts_count",  :default => 0
+    t.integer  "position",     :default => 0
+    t.integer  "category_id"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.text     "body"
+    t.integer  "forum_id"
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "preworks", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "complete"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "preworks", ["user_id"], :name => "index_preworks_on_user_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -23,6 +61,18 @@ ActiveRecord::Schema.define(:version => 20130315023533) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "topics", :force => true do |t|
+    t.string   "title"
+    t.integer  "hits",        :default => 0
+    t.boolean  "sticky",      :default => false
+    t.boolean  "locked",      :default => false
+    t.integer  "posts_count"
+    t.integer  "forum_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -37,7 +87,9 @@ ActiveRecord::Schema.define(:version => 20130315023533) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "name"
+    t.string   "username"
+    t.integer  "topics_count",           :default => 0
+    t.integer  "posts_count",            :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

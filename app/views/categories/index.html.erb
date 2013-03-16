@@ -1,0 +1,48 @@
+<h1>SDC Discussion Forum</h1>
+<% @categories.each do |category| %>
+  
+<h2><%= category.title %></h2>
+<% if current_user.has_role? :admin %>
+  <%= link_to "New Forum", new_forum_path %>
+  <%= link_to "Edit Category", edit_category_path(category) %>
+  <%= link_to "Delete Category", category_path(category), :confirm => "Are you sure you want to delete this category?", :method => :delete %>
+<% end %>
+<% if category.forums.size > 0 %>
+  <table class="table">
+    <tr class="smaller">
+      <th align="left">Forum</th>
+      <th width="10%" align="left">Topics</th>
+      <th width="10%" align="left">Posts</th>
+      <th width="15%" align="left">Last Post</th>
+    </tr>
+    <% category.forums.each do |forum| %>
+    <tr>
+      <td class="description">
+        <%= link_to forum.title, forum_path(forum) %><br />
+        <span class="smaller"><%= forum.description %></span><br />
+      </td>
+      <td class="counts smaller"><%= forum.topics.size %></td>
+      <td class="counts smaller"><%= forum.posts.size - forum.topics.size %></td>
+      <td class="last_post smaller">
+        <% if forum.posts.size > 0 %>
+          <%= forum.posts.last.created_at %><br />
+          <%= forum.posts.last.user.username %>
+        <% else %>
+          No Topics / Posts
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+<% else %>
+  <div class="module_body">There are currently no forums.</div>
+<% end %>
+
+<% end %>
+<% if current_user.has_role? :admin %>
+  <%= link_to "New Forum Category", new_category_path %>
+<% end %>  
+
+
+
