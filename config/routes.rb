@@ -1,7 +1,4 @@
 Students004::Application.routes.draw do
-  resources :prework_modules
-
-
   get "course/index", :id => "course"
   match "course" => "course#index"
 
