@@ -11,37 +11,20 @@
 
 <p id="notice"><%= notice %></p>
 <div class="well">
-<p>
-  <b>Introduction</b><br>
+<h2>Introduction</h2>
   <%= auto_link(@prework_module.intro) %>
-</p>
-
-<p>
-  <b>Resources</b><br>
+<h2>Resources</h2>
   <%= auto_link(@prework_module.resources) %>
-</p>
 
-<p>
-  <b>Forum link</b><br>
+<h2>Forum link</h2>
   <%= auto_link(@prework_module.forum_link) %>
-</p>
 
 
 
-<h2>Questions</h2>
-
-  <table class="table">
-   
-  <% @prework_module.prework_questions.each_with_index do |question, index| %>
-    <tr>
-      <td>
-        <%= index + 1 %>. <%= question.question %><br><br>
-
-      </td>
-      <td><%= link_to "edit", edit_prework_module_prework_question_path(@prework_module, question), :class => 'btn' %></td>
-      <td><%= link_to 'delete', [@prework_module, question], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
-    </tr>
-
-  <% end %>
-</table>
+<a href="<%= @prework_module.prework_questions.first.question %>" class="btn btn-success btn-large" target="_blank">Go to module questions</a>
+<br><br>
+<%= link_to 'back to prework', prework_path, :class => 'btn btn-primary' %>
+  
+  <% if current_user.has_role? :admin %><%= link_to 'edit question', edit_prework_module_prework_question_path(@prework_module.prework_questions.first), :class => 'btn' %><% end %>
+  
 </div>

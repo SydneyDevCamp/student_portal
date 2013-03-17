@@ -43,7 +43,7 @@
 
 <p><i>Knowledge</i></p>
 
-  <% if @prework_modules.count > 0 %>
+<% if @prework_modules.count > 0 %>
   <table class="table">
     <tr>
       <th>Module name</th>
@@ -54,13 +54,14 @@
       <tr>
         <td><%= pw_module.name %></td>
         <td>
-          <a href="#" class="btn btn-success">start module</a>
+          
+          <%= link_to 'start module', pw_module, :class => 'btn btn-success' %>
         </td>
       </tr>
       <% end %>
     <% end %>
   </table>
-  <% end %>
+<% end %>
 
 
 
@@ -75,7 +76,6 @@
   <% end %>
 </ol>
 <br>
-<%= link_to "start prework", new_user_prework_course_path(current_user), :class => 'btn btn-success' %>
 <br><br>
 <h3>Help</h3>
 <p>Please go to the forum topic for each section to ask questions or post issues you are having. This is a great way for everyone to start helping each other. I will also be keeping an eye on the discussion so I can help if needed.</p>

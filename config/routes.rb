@@ -1,7 +1,10 @@
 Students004::Application.routes.draw do
 
+  
+
   resources :prework_modules do
     resources :prework_questions
+    resources :user_modules
   end
 
   get "course/index", :id => "course"
