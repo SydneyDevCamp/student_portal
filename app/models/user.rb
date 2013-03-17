@@ -12,7 +12,16 @@ class User < ActiveRecord::Base
 
   has_many :topics, :dependent => :destroy
   has_many :posts, :dependent => :destroy
-  has_many :prework_answers, :dependent => :destroy
+  has_one :prework_course, :dependent => :destroy
   
-  
+
+
+
+  after_create :add_role_to_user
+
+  private
+
+  def add_role_to_user
+    self.add_role :student
+  end
 end

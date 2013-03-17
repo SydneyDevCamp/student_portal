@@ -1,5 +1,5 @@
 Students004::Application.routes.draw do
-  resources :prework_answers
+
   resources :prework_modules do
     resources :prework_questions
   end
@@ -24,4 +24,6 @@ Students004::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   resources :users
+
+
 end

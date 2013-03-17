@@ -13,13 +13,11 @@
 <% @prework_modules.each do |prework_module| %>
   <tr>
     <td><%= prework_module.order %></td>
-    <td><%= prework_module.name %></td>
+    <td><%= link_to prework_module.name, prework_module_path(prework_module) %></td>
     <td><%= prework_module.module_type %></td>
     <td>
         <%= link_to "add question", new_prework_module_prework_question_path(prework_module), :class => "btn" %> 
-        <% if prework_module.prework_questions.count > 0 %>
-            <%= link_to 'questions', prework_module_prework_questions_path(prework_module), :class => 'btn' %>
-        <% end %>
+        
     </td>
     <td><%= link_to 'Edit', edit_prework_module_path(prework_module) %></td>
     <td><%= link_to 'Destroy', prework_module, method: :delete, data: { confirm: 'Are you sure?' } %></td>

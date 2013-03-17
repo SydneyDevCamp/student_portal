@@ -1,11 +1,9 @@
-<h1>Listing prework_questions</h1>
+<h1>List of prework questions for </h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Order</th>
     <th>Question</th>
-    <th>Prework module</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -14,14 +12,11 @@
   <tr>
     <td><%= prework_question.order %></td>
     <td><%= prework_question.question %></td>
-    <td><%= prework_question.prework_module %></td>
-    <td><%= link_to 'Show', prework_question %></td>
-    <td><%= link_to 'Edit', edit_prework_question_path(prework_question) %></td>
-    <td><%= link_to 'Destroy', prework_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', edit_prework_module_prework_question_path(prework_question.prework_module, prework_question), :class => "btn" %></td>
+    <td></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Prework question', new_prework_question_path %>

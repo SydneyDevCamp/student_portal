@@ -1,51 +1,47 @@
 <h1>Module: <%= @prework_module.name %></h1>
-<%= link_to 'Edit module', edit_prework_module_path(@prework_module), :class => 'btn' %> 
+
+<% if current_user.has_role? :admin %>
+  <%= link_to 'edit module', edit_prework_module_path(@prework_module), :class => 'btn' %>
+  <%= link_to "add question", new_prework_module_prework_question_path(@prework_module), :class => "btn btn-primary" %>
+  <%= link_to 'back to modules', prework_modules_path, :class => 'btn' %>
+  <br>
+  <b>Order:</b><%= @prework_module.order %>
+  <p><b>Module type:</b><%= @prework_module.module_type %></p>
+<% end %>
+
 <p id="notice"><%= notice %></p>
-
+<div class="well">
 <p>
-  <b>Order:</b>
-  <%= @prework_module.order %>
-</p>
-
-
-<p>
-  <b>Intro:</b>
-  <%= @prework_module.intro %>
+  <b>Introduction</b><br>
+  <%= auto_link(@prework_module.intro) %>
 </p>
 
 <p>
-  <b>Resources:</b>
-  <%= @prework_module.resources %>
+  <b>Resources</b><br>
+  <%= auto_link(@prework_module.resources) %>
 </p>
 
 <p>
-  <b>Forum link:</b>
-  <%= @prework_module.forum_link %>
+  <b>Forum link</b><br>
+  <%= auto_link(@prework_module.forum_link) %>
 </p>
 
-<p>
-  <b>Module type:</b>
-  <%= @prework_module.module_type %>
-</p>
+
 
 <h2>Questions</h2>
 
-<% if @prework_module.prework_questions.count > 0 %>
   <table class="table">
+   
+  <% @prework_module.prework_questions.each_with_index do |question, index| %>
     <tr>
-      <th>Question</th>
-      <th></th>
-      <th></th>
-    </tr>
-  <% @prework_module.prework_questions.each do |question| %>
-    <tr>
-      <td><%= question.order %>. <%= question.question %></td>
+      <td>
+        <%= index + 1 %>. <%= question.question %><br><br>
+
+      </td>
       <td><%= link_to "edit", edit_prework_module_prework_question_path(@prework_module, question), :class => 'btn' %></td>
       <td><%= link_to 'delete', [@prework_module, question], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
     </tr>
+
   <% end %>
 </table>
-<% end %>
-
-
-<%= link_to 'Back', prework_modules_path %>
+</div>
