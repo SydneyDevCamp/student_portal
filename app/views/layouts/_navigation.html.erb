@@ -5,7 +5,11 @@
         <nav class="navbar-inner">
           <div class="container">
             <ul class="nav">
-              <li><%= link_to "Sydney Dev Camp - Student Portal", root_path %></li>
+
+              <li><%= link_to root_path do %>
+                <%= image_tag('logo-small.png') %> Sydney Dev Camp - Student Portal
+                <% end %>
+              </li>
             </ul>
             <ul class="nav pull-right">
               <li><%= link_to 'Discussion', forums_root_path %></li>

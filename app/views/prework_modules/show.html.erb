@@ -16,9 +16,9 @@
 <h2>Resources</h2>
   <%= auto_link(@prework_module.resources) %>
 
-<h2>Forum link</h2>
-  <%= auto_link(@prework_module.forum_link) %>
 
+<a href="<%= auto_link(@prework_module.forum_link) %>" class="btn btn-inverse btn-large" target="_blank">Go to forum</a>
+<br><br>
 
 
 <a href="<%= @prework_module.prework_questions.first.question %>" class="btn btn-success btn-large" target="_blank">Go to module questions</a>
