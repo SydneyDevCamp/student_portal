@@ -22,11 +22,14 @@
 <a href="<%= auto_link(@prework_module.forum_link) %>" class="btn btn-inverse btn-large" target="_blank">Go to forum</a>
 <br><br>
 
+<% if @prework_module.prework_questions.count > 0 %>
+  <a href="<%= @prework_module.prework_questions.first.question %>" class="btn btn-success btn-large" target="_blank">Go to module questions</a>
+   <% if current_user.has_role? :admin %><%= link_to 'edit question', edit_prework_module_prework_question_path(@prework_module.prework_questions.first), :class => 'btn' %><% end %>
+<% end %>
 
-<a href="<%= @prework_module.prework_questions.first.question %>" class="btn btn-success btn-large" target="_blank">Go to module questions</a>
-<br><br>
-<%= link_to 'back to prework', prework_path, :class => 'btn btn-primary' %>
   
-  <% if current_user.has_role? :admin %><%= link_to 'edit question', edit_prework_module_prework_question_path(@prework_module.prework_questions.first), :class => 'btn' %><% end %>
-  
+ 
+ 
+ <br><br>
+<%= link_to 'back to prework', prework_path, :class => 'btn btn-primary' %> 
 </div>
