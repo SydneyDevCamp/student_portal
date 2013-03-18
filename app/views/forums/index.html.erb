@@ -33,7 +33,7 @@
         <tr>
           <td class="icon"><%= image_tag 'ruby.png' %></td>
           <td class="description">
-            <%= link_to forum.title, forum_path(forum) %><br />
+            <%= link_to forum.title, forum_path(forum), :class => 'btn btn-info btn-small' %><br />
             <span class="smaller"><%= forum.description %></span><br />
           </td>
           <td class="counts smaller"><%= forum.topics.size %></td>
