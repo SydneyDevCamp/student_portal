@@ -7,7 +7,7 @@ group :assets do
 end
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0"
-gem "pg", ">= 0.14.1"
+gem "pg", ">= 0.14.1", :group => [:development, :test]
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 gem "database_cleaner", ">= 0.9.1", :group => :test
 gem "email_spec", ">= 1.4.0", :group => :test
@@ -21,3 +21,4 @@ gem "better_errors", ">= 0.6.0", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
 gem 'forum_monster'
 gem 'rails_autolink'
+gem 'mysql2', :group => :production
