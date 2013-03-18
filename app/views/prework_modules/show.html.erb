@@ -13,9 +13,11 @@
 <div class="well">
 <h2>Introduction</h2>
   <%= auto_link(@prework_module.intro) %>
-<h2>Resources</h2>
-  <%= auto_link(@prework_module.resources) %>
+  <br>
 
+<h2>Resources</h2>
+  <%= auto_link(@prework_module.resources).html_safe %>
+  <br><br>
 
 <a href="<%= auto_link(@prework_module.forum_link) %>" class="btn btn-inverse btn-large" target="_blank">Go to forum</a>
 <br><br>

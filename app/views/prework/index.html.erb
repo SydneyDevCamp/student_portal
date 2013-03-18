@@ -66,15 +66,25 @@
 
 
 <p><i>Skills</i></p>
-<ol>
-  <% if @prework_modules.count > 0 %>
+<% if @prework_modules.count > 0 %>
+  <table class="table">
+    <tr>
+      <th>Module name</th>
+      <th></th>
+    </tr>
     <% @prework_modules.each do |pw_module| %>
       <% if pw_module.module_type == 'skill' %>
-        <li><%= pw_module.name %></li>
+      <tr>
+        <td><%= pw_module.name %></td>
+        <td>
+          
+          <%= link_to 'start module', pw_module, :class => 'btn btn-success' %>
+        </td>
+      </tr>
       <% end %>
     <% end %>
-  <% end %>
-</ol>
+  </table>
+<% end %>
 <br>
 <br><br>
 <h3>Help</h3>
