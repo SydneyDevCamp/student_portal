@@ -28,7 +28,7 @@
       </tr>
       <tr>
         <td>
-          <%= simple_format(auto_link(post.body)) %>
+          <%= simple_format(auto_link(post.body)).html_safe %>
         </td>
       </tr>
       <% end %>

@@ -12,20 +12,16 @@ class User < ActiveRecord::Base
 
   has_many :topics, :dependent => :destroy
   has_many :posts, :dependent => :destroy
-  has_many :user_modules, :dependent => :destroy
   
-
-
-
   after_create :add_role_to_user
 
   private
 
   def add_role_to_user
-    if self.username == 'Pete'
-      self.add_role :admin
-    else
+    # if self.username == 'Pete'
+    #   self.add_role :admin
+    # else
       self.add_role :student
     end
-  end
+  # end
 end

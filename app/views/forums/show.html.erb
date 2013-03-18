@@ -1,4 +1,4 @@
-<h1>SDC Discussion Forum</h1>
+<h1><%= link_to 'SDC Discussion Forum', forums_root_path %></h1>
 <h2><%= @forum.title %></h2>
   <%= link_to "New Topic", new_forum_topic_path(@forum), :class => "btn btn-success" %>
   <% if current_user.has_role? :admin %>
@@ -15,7 +15,7 @@
   </tr>
   <% @forum.topics.each do |topic| %>
   <tr>
-    <td class="icon"><%= image_tag 'ruby.png' %></td>
+    <td class="icon"></td>
     <td class="description">
       <%= link_to topic.title, topic_path(topic) %><br />
       <span class="smaller">by <%= topic.user.username %></span>
@@ -23,7 +23,7 @@
     <td class="counts smaller"><%= topic.posts.size - 1 %></td>
     <td class="counts smaller"><%= topic.hits %></td>
     <td class="last_post smaller">
-      <%= topic.posts.last.created_at %><br />
+      <%= topic.posts.last.created_at.strftime("%A, %e %b %Y") %><br />
       by <%= topic.posts.last.user.username %>
     </td>
   </tr>
