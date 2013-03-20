@@ -1,5 +1,35 @@
+<div class="well">
+<h2><%= @topic.title %></h2>
+     
+   
+    <table class="table">
+      <% @topic.posts.each do |post| %>
+      <tr>
+        <td class="post_author" rowspan="2">
+          <h3><%= post.user.username %></h3>
+          <span class="avatar"><!-- This space reserved for Avatar --></span>
+            <br />
+            Posts <%= post.user.posts.size %><br />
+            Registered <%= post.user.created_at.strftime("%A, %e %b %Y") %><br />
+          
+        </td>
+        <td>
+         Posted <%= post.created_at.strftime("%I:%M:%P on %A, %e %b %Y") %>
+        
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= simple_format(auto_link(post.body)).html_safe %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+</div>
 <h2><%= action_name.humanize %> Post</h2>
 <%= simple_form_for [@topic, @post] do |f| %>
   <%= f.input :body, :as => :text, :input_html => { :rows => 10, :class => "span7" } %></span>
   <%= f.submit "submit", :class => 'btn btn-success' %> or <%= link_to "cancel", @topic %>
 <% end %>
+
+

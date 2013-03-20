@@ -1,7 +1,8 @@
 <%= link_to "Back to Forum", forum_path(@topic.forum) %>
+<div class="well">
 <h2><%= @topic.title %></h2>
-      <%= link_to "Edit", edit_topic_path(@topic) %>
-      <%= link_to "Delete", @topic, :confirm => "Are you sure?", :method => :delete %>
+      <%= link_to "Edit", edit_topic_path(@topic), :class => 'btn btn-warning btn-small'  %>
+      <%= link_to "Delete", @topic, :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-danger btn-small' %>
       <%= link_to @topic.sticky ? "Unstick" : "Sticky", {:controller => 'topics', :action => 'update', :topic => {:sticky => @topic.sticky ? "false" : "true" }}, :method => :put %>
       <%= link_to @topic.locked ? "Unlock" : "Lock", {:controller => 'topics', :action => 'update', :topic => {:locked => @topic.locked ? "false" : "true" }}, :method => :put %>
    
@@ -33,3 +34,4 @@
       </tr>
       <% end %>
     </table>
+</div>
