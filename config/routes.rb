@@ -2,6 +2,9 @@ Students004::Application.routes.draw do
 
   
 
+  resources :user_profiles
+
+
   resources :prework_modules do
     resources :prework_questions
     resources :user_modules

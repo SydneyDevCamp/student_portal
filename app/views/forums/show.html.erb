@@ -16,10 +16,16 @@
   </tr>
   <% @forum.topics.each do |topic| %>
   <tr>
-    <td class="icon"></td>
+    <td class="icon"><% if topic.user.user_profile %><%= link_to user_profile_path(topic.user.user_profile) do %><%= image_tag topic.user.user_profile.avatar(:thumb) %><% end %><% end %></td>
     <td class="description">
       <%= link_to topic.title, topic_path(topic) %><br />
-      <span class="smaller">by <%= topic.user.username %></span>
+      <span class="smaller">by 
+        <% if topic.user.user_profile %>
+          <%= link_to topic.user.username, user_profile_path(topic.user.user_profile) %>
+        <% else %>
+          <%= topic.user.username %>
+        <% end %>
+      </span>
     </td>
     <td class="counts smaller"><%= topic.posts.size - 1 %></td>
     <td class="counts smaller"><%= topic.hits %></td>

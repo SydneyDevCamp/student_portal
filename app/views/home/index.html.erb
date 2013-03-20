@@ -2,6 +2,39 @@
   <div class="row-fluid">
 
     <div class="span12">
+      <h1>Updates to site!</h1>
+      <div class="well">
+        
+        <p>I've just updated the site with some new features and improvements.</p>
+
+        <h2>Discussion forum interface improved.</h2>
+        <ul>
+          <li>When you reply to a post, you can now see the original post on the same page</li>
+          <li>Added background wells to improve the UI</li>
+        </ul>
+
+        <h2>Added User Profiles</h2>
+        <p>You can now create a user profile for yourself and upload a profile picture. This picture will display in the forums. </p>
+
+        <% if !current_user.user_profile %>
+          <%= link_to "Create your profile now", new_user_profile_path, :class => 'btn btn-success btn-large' %>
+        <% end %>
+
+        <h3>Upcoming changes</h3>
+        <p>I will be continuing to add more knowledge prework material over the next 24 hours and will send out an email when it has been added.</p>
+        <p>If you come across any bugs or things that don't work well, please let me know by emailing me here: peter@sydneydevcamp.com</p>
+        <p>Cheers!</p>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+
+    <div class="span12">
       
         <h1>Welcome to Sydney Dev Camp!</h1>
       <div class="well">

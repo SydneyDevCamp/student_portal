@@ -12,11 +12,25 @@
               </li>
             </ul>
             <ul class="nav pull-right">
-              <li><%= link_to 'Discussion', forums_root_path %></li>
-              <li><%= link_to 'Prework', prework_path %></li>
+              <li>
+                <%= link_to forums_root_path do %>
+                  <span class="fui-bubble-16"> </span> Discussion
+                <% end %>
+              </li>
+              <li><%= link_to prework_path do %>
+                  <span class="fui-new-16"> </span> Prework
+                <% end %>
+              </li>
               <li><a href="#"><span class="fui-man-16"></span> <%= current_user.username %></a>
                 <ul>
                   <li><%= link_to 'My account', edit_user_registration_path %></li>
+                  <li>
+                    <% if current_user.user_profile %>
+                      <%= link_to 'My profile', user_profile_path(current_user.user_profile) %>
+                    <% else %>
+                      <%= link_to 'Create profile', new_user_profile_path %>
+                    <% end %>
+                  </li>
                   <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
                   <% if current_user.has_role? :admin %><li><%= link_to 'Admin', users_path %></li><% end %>
                 </ul>

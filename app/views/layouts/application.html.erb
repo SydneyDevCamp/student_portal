@@ -8,6 +8,11 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
+    <script>
+      $(document).ready(function(){
+          $('#your_input_id').set_timezone(); 
+      });
+    </script>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
 

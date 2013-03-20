@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<div class="well">
+  <h1><%= @user.username %>'s Profile</h1>
+  <table class="table">
+    <tr>
+      <td rowspan='8'><%= image_tag @user_profile.avatar.url(:medium) %></td>
+      <th>About:</th>
+      <td><%= auto_link(@user_profile.about).html_safe %></td>
+    </tr>
+  
+    <tr>
+      <th>Email:</th>
+      <td><%= @user_profile.email %></td>
+    </tr>
+    <tr>
+      <th>Phone:</th>
+      <td><a href="tel:<%= @user_profile.phone %>"><%= @user_profile.phone %></a></td>
+    </tr>
+    <tr>
+      <th>Facebook:</th>
+      <td><a href="<%= @user_profile.facebook %>" target="_blank"><%= @user_profile.facebook %></a></td>
+    </tr>
+    <tr>
+      <th>Twitter:</th>
+      <td><a href="<%= @user_profile.twitter %>" target="_blank"><%= @user_profile.twitter %></a></td>
+    </tr>
+    <tr>
+      <th>Github:</th>
+      <td><a href="<%= @user_profile.github %>" target="_blank"><%= @user_profile.github %></a></td>
+    </tr>
+    <tr>
+      <th>Linkedin:</th>
+      <td><a href="<%= @user_profile.linkedin %>" target="_blank"><%= @user_profile.linkedin %></a></td>
+    </tr>
+
+    </table>
+
+<% if @user == current_user %>
+  <div class="pull-right">
+    <%= link_to "edit profile", edit_user_profile_path(@user_profile), :class => 'btn btn-warning' %>
+    
+  </div>
+  <br>
+<% end %>
+
+<div>

@@ -10,11 +10,12 @@
       <% @topic.posts.each do |post| %>
       <tr>
         <td class="post_author" rowspan="2">
-          <h3><%= post.user.username %></h3>
-          <span class="avatar"><!-- This space reserved for Avatar --></span>
+          
+          <%= link_to user_profile_path(post.user.user_profile) do %>
+            <h3><%= post.user.username %> </h3> <%= image_tag post.user.user_profile.avatar(:thumb) %>
+            <% end %> 
             <br />
-            Posts <%= post.user.posts.size %><br />
-            Registered <%= post.user.created_at.strftime("%A, %e %b %Y") %><br />
+            Posts: <%= post.user.posts.size %><br />
           
         </td>
         <td>

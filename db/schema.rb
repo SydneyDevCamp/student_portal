@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317061048) do
+ActiveRecord::Schema.define(:version => 20130320030154) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -117,6 +117,25 @@ ActiveRecord::Schema.define(:version => 20130317061048) do
 
   add_index "user_prework_modules", ["prework_module_id"], :name => "index_user_prework_modules_on_prework_module_id"
   add_index "user_prework_modules", ["user_id"], :name => "index_user_prework_modules_on_user_id"
+
+  create_table "user_profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "github"
+    t.string   "linkedin"
+    t.text     "about"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "user_profiles", ["user_id"], :name => "index_user_profiles_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
