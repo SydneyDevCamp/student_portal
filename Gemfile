@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -22,3 +22,4 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 gem 'forum_monster'
 gem 'rails_autolink'
 gem 'mysql2', :group => :production
+gem "paperclip", "~> 3.0"
