@@ -1,68 +1,10 @@
-<div class="container-fluid">
-  <div class="row-fluid">
-
-    <div class="span12">
-      <h1>Updates to site!</h1>
-      <div class="well">
-        
-        <p>I've just updated the site with some new features and improvements.</p>
-
-        <h2>Discussion forum interface improved.</h2>
-        <ul>
-          <li>When you reply to a post, you can now see the original post on the same page</li>
-          <li>Added background wells to improve the UI</li>
-        </ul>
-
-        <h2>Added User Profiles</h2>
-        <p>You can now create a user profile for yourself and upload a profile picture. This picture will display in the forums. </p>
-
-        <% if !current_user.user_profile %>
-          <%= link_to "Create your profile now", new_user_profile_path, :class => 'btn btn-success btn-large' %>
-        <% end %>
-
-        <h3>Upcoming changes</h3>
-        <p>I will be continuing to add more knowledge prework material over the next 24 hours and will send out an email when it has been added.</p>
-        <p>If you come across any bugs or things that don't work well, please let me know by emailing me here: peter@sydneydevcamp.com</p>
-        <p>Cheers!</p>
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid">
-  <div class="row-fluid">
-
-    <div class="span12">
+<% @announcements.each do |announcement| %>
+  <h1><%= announcement.title %> <small> <%= announcement.created_at.strftime("%e %b %Y") %></small></h1>
+  <div class="well">
+    <%= auto_link(announcement.body).html_safe %>
+    <% if current_user.has_role? :admin %>
+      <%= link_to 'Edit announcement', edit_announcement_path(announcement), :class => 'btn' %>
       
-        <h1>Welcome to Sydney Dev Camp!</h1>
-      <div class="well">
-        <h2>You have just started on a new, exciting adventure!</h2>
-         <br>
-        <p>This site is going to be the place to come for all things related to the programme. It is still evolving and many new features will be added over the next few months - perhaps even with your help.</p>
-
-        <br>
-        <h3>Introductions</h3>
-        <p>To begin, please go to the discussion forum and create a topic to introduce yourself. Write about your background, what you hope to get out of the course and what your hobbies and interests are. It will be a great way for everyone to get to know each other.</p>
-
-        <%= link_to 'Go to the discussion forum', forums_root_path, :class => 'btn btn-success btn-large' %>
-        <br> <br>
-
-        <h3>Prework</h3>
-        <p>The prework is now available and you can get started as soon as you like. There is a forum topic set up for every module so you can discuss amongst yourselves and post your questions and observations there. Please also post any other links you discovered and found useful or interesting to help your fellow classmates as they go throught the modules.</p>
-
-        <p>We are all about collaboration here - this is not a competition. We want to foster a culture of "paying it forward" - helping others when you can because one day you might need help.</p>
-
-        <%= link_to 'Go to prework', prework_path, :class => 'btn btn-success btn-large' %>
-
-        <br> <br>
-        <h3>The course</h3>
-        <p>The course work will be posted week by week so that I can adjust it as we go along. I am expecting to need to fine tune the pace of the course as we discover how fast we get through the work.</p>
-
-        <h3>See you all very soon! Not long now!</h3>
-
-      </div>
-    </div><!--/row-->
-  </div><!--/span-->
-</div><!--/row-->
+    <% end %>
+  </div>
+<% end %>

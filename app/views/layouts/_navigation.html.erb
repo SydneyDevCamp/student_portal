@@ -32,7 +32,10 @@
                     <% end %>
                   </li>
                   <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
-                  <% if current_user.has_role? :admin %><li><%= link_to 'Admin', users_path %></li><% end %>
+                  <% if current_user.has_role? :admin %>
+                    <li><%= link_to 'Admin', users_path %></li>
+                    <li><%= link_to 'Announcements', announcements_path %></li>
+                  <% end %>
                 </ul>
               </li>
             </ul>

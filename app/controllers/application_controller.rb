@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :get_users
   protect_from_forgery
   layout :layout_by_resource
+
+
 
   
   rescue_from CanCan::AccessDenied do |exception|
@@ -16,6 +18,12 @@ class ApplicationController < ActionController::Base
     else
       "application"
     end
+  end
+
+  private
+
+  def get_users
+    @users = User.all
   end
 
 end

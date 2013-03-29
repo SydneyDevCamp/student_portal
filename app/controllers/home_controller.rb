@@ -3,5 +3,6 @@ class HomeController < ApplicationController
 
   def index
     @users = User.all
+    @announcements = Announcement.published
   end
 end
