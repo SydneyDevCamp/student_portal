@@ -2,6 +2,9 @@ Students004::Application.routes.draw do
 
   
 
+  resources :announcements
+
+
   resources :user_profiles
 
 
@@ -29,7 +32,7 @@ Students004::Application.routes.draw do
   end
   root :to => "home#index"
   devise_for :users
-  resources :users
+  resources :users, :except => :destroy
 
 
 end
