@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= @post.user.username %> has replied to a post: <%= @post.topic.title %></h1>
+    <p>
+      <%= @post.body %><br/>
+    </p>
+    <a href="http://students.sydneydevcamp.com<%= topic_path(@post.topic) %>">Visit post now</a>
+
+  
+  </body>
+</html>

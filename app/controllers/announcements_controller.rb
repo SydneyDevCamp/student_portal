@@ -44,6 +44,7 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       if @announcement.save
+        AnnouncementMailer.a_mailer(@announcement).deliver
         format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
         format.json { render json: @announcement, status: :created, location: @announcement }
       else
@@ -80,4 +81,6 @@ class AnnouncementsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 end

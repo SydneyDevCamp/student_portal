@@ -18,6 +18,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     
     if @post.save
+      PostMailer.p_mailer(@post).deliver
       flash[:notice] = "Post was successfully created."
       redirect_to topic_path(@post.topic)
     else
