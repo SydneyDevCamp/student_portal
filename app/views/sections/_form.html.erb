@@ -1,0 +1,14 @@
+<h1>Day <%= @day.number %> <small>(Week: <%= @day.week.title %>)</small></h1>
+
+<h2><%= @day.title %></h2>
+
+<%= simple_form_for [@day, @section] do |f| %>
+  <%= f.error_notification %>
+    
+    <%= f.input :order %>
+    <%= f.input :title, :input_html => { :class => "span9"} %>
+    <%= f.input :content, :input_html => { :rows => 20, :class => "span9 tinymce"} %>
+
+    <%= f.button :submit %>
+
+<% end %>

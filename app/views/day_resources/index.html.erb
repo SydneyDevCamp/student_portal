@@ -1,0 +1,29 @@
+<h1>Listing day_resources</h1>
+
+<table>
+  <tr>
+    <th>Day</th>
+    <th>Title</th>
+    <th>Content</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @day_resources.each do |day_resource| %>
+  <tr>
+    <td><%= day_resource.day %></td>
+    <td><%= day_resource.title %></td>
+    <td><%= day_resource.content %></td>
+    <td><%= day_resource.user %></td>
+    <td><%= link_to 'Show', day_resource %></td>
+    <td><%= link_to 'Edit', edit_day_resource_path(day_resource) %></td>
+    <td><%= link_to 'Destroy', day_resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Day resource', new_day_resource_path %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Day:</b>
+  <%= @day_resource.day %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @day_resource.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @day_resource.content %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @day_resource.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_day_resource_path(@day_resource) %> |
+<%= link_to 'Back', day_resources_path %>

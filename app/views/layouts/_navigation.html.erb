@@ -14,11 +14,21 @@
             <ul class="nav pull-right">
               <li>
                 <%= link_to forums_root_path do %>
-                  <span class="fui-bubble-16"> </span> Discussion
+                  <span class="fui-bubble-16"> </span> &nbsp;Discussion
                 <% end %>
               </li>
-              <li><%= link_to prework_path do %>
-                  <span class="fui-new-16"> </span> Prework
+              <li>
+                <%= link_to calendar_path do %>
+                  <span class="fui-calendar-16"> </span> &nbsp;Calendar
+                <% end %>
+              </li>
+              <li><a href="#"><span class="fui-menu-16"> &nbsp;Course</span></a>
+                <% if @weeks.count > 0 %>
+                  <ul>
+                    <% @weeks.each do |week| %>
+                      <li><%=link_to 'Week ' + week.number.to_s, week_path(week) %></li>
+                    <% end %>
+                  </ul>
                 <% end %>
               </li>
               <li><a href="#"><span class="fui-man-16"></span> <%= current_user.username %></a>
@@ -35,6 +45,10 @@
                   <% if current_user.has_role? :admin %>
                     <li><%= link_to 'Admin', users_path %></li>
                     <li><%= link_to 'Announcements', announcements_path %></li>
+                    <li><%= link_to 'Weeks', weeks_path %></li>
+                    <li><%= link_to 'Week Resources', week_resources_path %></li>
+                    <li><%= link_to 'Days', days_path %></li>
+                    <li><%= link_to 'Day Resources', day_resources_path %></li>
                   <% end %>
                 </ul>
               </li>

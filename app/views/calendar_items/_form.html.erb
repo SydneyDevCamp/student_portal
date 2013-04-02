@@ -1,0 +1,13 @@
+<%= simple_form_for(@calendar_item) do |f| %>
+  <%= f.error_notification %>
+
+    <%= f.input :day, :collection => ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'] %>
+    <%= f.input :date %>
+    <%= f.input :time %>
+    <%= f.input :title, :input_html => { :class => "span9"} %>
+    <%= f.input :location, :input_html => { :class => "span9"} %>
+    <%= f.input :details, :input_html => { :rows => 10, :class => "span9 tinymce"} %>
+
+    <%= f.button :submit %>
+
+<% end %>

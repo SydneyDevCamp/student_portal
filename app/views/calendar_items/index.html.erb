@@ -1,0 +1,33 @@
+<h1>Listing calendar_items</h1>
+
+<table>
+  <tr>
+    <th>Day</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Title</th>
+    <th>Location</th>
+    <th>Details</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @calendar_items.each do |calendar_item| %>
+  <tr>
+    <td><%= calendar_item.day %></td>
+    <td><%= calendar_item.date %></td>
+    <td><%= calendar_item.time %></td>
+    <td><%= calendar_item.title %></td>
+    <td><%= calendar_item.location %></td>
+    <td><%= calendar_item.details %></td>
+    <td><%= link_to 'Show', calendar_item %></td>
+    <td><%= link_to 'Edit', edit_calendar_item_path(calendar_item) %></td>
+    <td><%= link_to 'Destroy', calendar_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Calendar item', new_calendar_item_path %>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+
+  <b><%= @calendar_item.day %>, <%= @calendar_item.date.strftime("%e %b %Y") %></b>
+
+<p>
+  <b>Time:</b>
+  <%= @calendar_item.time.strftime("%H:%M") %>
+</p>
+
+
+  <h3><%= @calendar_item.title %></h3>
+<hr>
+
+<p>
+  <b>Location:</b><br />
+  <%= @calendar_item.location %>
+</p>
+
+<p>
+  <b>Details:</b><br />
+  <%= @calendar_item.details %>
+</p>
+<br />
+<hr>
+<%= link_to 'Edit', edit_calendar_item_path(@calendar_item), :class => 'btn btn-info' %>
+<%= link_to 'Back to calendar', calendar_path, :class => 'btn btn-info' %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Week:</b>
+  <%= @week_resource.week %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @week_resource.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @week_resource.body %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @week_resource.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_week_resource_path(@week_resource) %> |
+<%= link_to 'Back', week_resources_path %>

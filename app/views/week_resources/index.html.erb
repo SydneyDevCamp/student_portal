@@ -1,0 +1,29 @@
+<h1>Listing week_resources</h1>
+
+<table>
+  <tr>
+    <th>Week</th>
+    <th>Title</th>
+    <th>Body</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @week_resources.each do |week_resource| %>
+  <tr>
+    <td><%= week_resource.week %></td>
+    <td><%= week_resource.title %></td>
+    <td><%= week_resource.body %></td>
+    <td><%= week_resource.user %></td>
+    <td><%= link_to 'Show', week_resource %></td>
+    <td><%= link_to 'Edit', edit_week_resource_path(week_resource) %></td>
+    <td><%= link_to 'Destroy', week_resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Week resource', new_week_resource_path %>

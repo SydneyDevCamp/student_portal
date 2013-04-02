@@ -1,0 +1,11 @@
+<%= simple_form_for(@day) do |f| %>
+  <%= f.error_notification %>
+    <%= f.association :week %>
+    <%= f.input :number, :label => 'Day' %>
+    <%= f.input :title, :input_html => { :class => "span9"}%>
+    <%= f.input :intro, :input_html => { :rows => 20, :class => "span9 tinymce"} %>
+    
+
+    <%= f.button :submit %>
+
+<% end %>

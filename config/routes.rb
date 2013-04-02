@@ -1,6 +1,23 @@
 Students004::Application.routes.draw do
 
-  
+  resources :calendar_items
+
+
+  get "calendar/index", :id => "calendar"
+  match "calendar" => "calendar#index"
+
+  resources :week_resources
+
+
+  resources :day_resources
+
+
+  resources :days do
+    resources :sections
+  end
+
+  resources :weeks
+
 
   resources :announcements
 

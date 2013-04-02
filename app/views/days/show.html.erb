@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<div id="top">
+<h1>Day <%= @day.number %> <small>(Week: <%= @day.week.title %>)</small></h1>
+</div>
+<h2><%= @day.title %></h2>
+<%= auto_link(@day.intro).html_safe %>
+<br />
+<h3>Agenda</h3>
+<ol>
+<% @day.sections.each do |section| %>
+<li><a href="#<%= section.order %>"><%= section.title %></a></li>
+<% end %>
+</ol>
+
+  <br />
+  <br />
+  <hr>
+  <br />
+  <br />
+
+<% @day.sections.each do |section| %>
+<div id="<%= section.order %>">
+  <h3><%= section.title %><br /></h3>
+  <%= auto_link(section.content).html_safe %>
+  <br />
+  <br />
+  <a href="#top">back to top</a>
+  <% if current_user.has_role? :admin %>
+    <br /><%= link_to 'Edit Section', edit_day_section_path(@day, section), :class => 'btn btn-warning' %>
+  <% end %>
+  <hr>
+</div>
+<% end %>
+
+
+<% if current_user.has_role? :admin %>
+  <%= link_to 'Edit Day', edit_day_path(@day), :class => 'btn btn-warning' %>
+  <%= link_to 'Add Section', new_day_section_path(@day), :class => 'btn btn-warning' %>
+<% end %>
+  <br />
+  <br />
+  <hr>
+  <br />
+  <br />

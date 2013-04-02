@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="span12">
+<hr>
+    <% if @week.days %>
+      <% @week.days.each do |day| %>
+        <%= link_to 'Day ' + day.number.to_s, day_path(day), :class => 'btn btn-info' %>
+      <% end %>
+    <% end %>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+
+    <h2>Week <%= @week.number %></h2>
+
+
+    <h1><%= @week.title %></h1>
+
+
+    <%= auto_link(@week.intro.html_safe) %>
+    <br />
+    <hr>
+    <br />
+
+    <h3>Week outline</h3>
+    <% @week.days.each do |day| %>
+      <h4><b>Day <%= day.number %>: <%= day.title %></b></h4>
+    <% end %>
+    <% if current_user.has_role? :admin %>
+    <br />
+    <hr>
+    <br />
+      <%= link_to 'Edit Week', edit_week_path(@week), :class => 'btn btn-warning' %>
+    <% end %>
+  </div>
+</div>
+
+

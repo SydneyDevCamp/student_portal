@@ -11,12 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329042815) do
+ActiveRecord::Schema.define(:version => 20130402102839) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
     t.text     "body"
     t.boolean  "publish"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "calendar_items", :force => true do |t|
+    t.string   "day"
+    t.date     "date"
+    t.time     "time"
+    t.string   "title"
+    t.string   "location"
+    t.text     "details"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -28,6 +39,29 @@ ActiveRecord::Schema.define(:version => 20130329042815) do
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
   end
+
+  create_table "day_resources", :force => true do |t|
+    t.integer  "day_id"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "day_resources", ["day_id"], :name => "index_day_resources_on_day_id"
+  add_index "day_resources", ["user_id"], :name => "index_day_resources_on_user_id"
+
+  create_table "days", :force => true do |t|
+    t.integer  "number"
+    t.string   "title"
+    t.text     "intro"
+    t.integer  "week_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "days", ["week_id"], :name => "index_days_on_week_id"
 
   create_table "forums", :force => true do |t|
     t.string   "title"
@@ -92,6 +126,17 @@ ActiveRecord::Schema.define(:version => 20130329042815) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "sections", :force => true do |t|
+    t.integer  "day_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "order"
+  end
+
+  add_index "sections", ["day_id"], :name => "index_sections_on_day_id"
 
   create_table "topics", :force => true do |t|
     t.string   "title"
@@ -172,5 +217,26 @@ ActiveRecord::Schema.define(:version => 20130329042815) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "week_resources", :force => true do |t|
+    t.integer  "week_id"
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "week_resources", ["user_id"], :name => "index_week_resources_on_user_id"
+  add_index "week_resources", ["week_id"], :name => "index_week_resources_on_week_id"
+
+  create_table "weeks", :force => true do |t|
+    t.integer  "number"
+    t.string   "title"
+    t.text     "intro"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "active"
+  end
 
 end

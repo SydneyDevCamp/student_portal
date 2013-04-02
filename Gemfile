@@ -24,3 +24,4 @@ gem 'rails_autolink'
 gem 'mysql2', :group => :production
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk', '~> 1.5.7'
+gem 'tinymce-rails'

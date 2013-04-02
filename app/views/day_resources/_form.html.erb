@@ -1,0 +1,14 @@
+<%= simple_form_for(@day_resource) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :day %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.association :user %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
