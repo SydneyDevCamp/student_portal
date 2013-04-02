@@ -30,8 +30,9 @@
                     <% @weeks.each do |week| %>
                       <li><%=link_to 'Week ' + week.number.to_s, week_path(week) %></li>
                     <% end %>
-                  </ul>
-                <% end %>
+                  <% end %>
+                </ul>
+                
               </li>
               <li><a href="#"><span class="fui-man-16"></span> <%= current_user.username %></a>
                 <ul>
