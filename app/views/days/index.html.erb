@@ -1,11 +1,11 @@
-<h1>Listing days</h1>
+<h1>Days</h1>
 
-<table>
+<%= link_to 'New Day', new_day_path, :class => 'btn' %><br>
+<table class="table">
   <tr>
+    <th>Week</th>
     <th>Number</th>
     <th>Title</th>
-    <th>Intro</th>
-    <th>Week</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,17 +13,14 @@
 
 <% @days.each do |day| %>
   <tr>
+    <td><%= day.week.number %></td>
     <td><%= day.number %></td>
-    <td><%= day.title %></td>
-    <td><%= day.intro %></td>
-    <td><%= day.week %></td>
-    <td><%= link_to 'Show', day %></td>
+    <td><%= link_to day.title, day %></td>
     <td><%= link_to 'Edit', edit_day_path(day) %></td>
-    <td><%= link_to 'Destroy', day, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Delete', day, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Day', new_day_path %>

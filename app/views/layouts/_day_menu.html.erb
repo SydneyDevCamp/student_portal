@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="span12">
+    <div class="well">
+      <%= link_to 'Up to Week', @day.week, :class => 'btn btn-primary' %>
+      <% if @day.week.days %>
+        <% @day.week.days.each do |day| %>
+          <%= link_to 'Day ' + day.number.to_s, day_path(day), :class => 'btn btn-info' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

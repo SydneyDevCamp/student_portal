@@ -1,7 +1,15 @@
 <p id="notice"><%= notice %></p>
+<%= render "layouts/day_menu" %>
+<hr>
 <div id="top">
 <h1>Day <%= @day.number %> <small>(Week: <%= @day.week.title %>)</small></h1>
+<% if current_user.has_role? :admin %>
+  <%= link_to 'Edit Day', edit_day_path(@day), :class => 'btn btn-warning' %>
+  <%= link_to 'Add Section', new_day_section_path(@day), :class => 'btn btn-warning' %>
+<% end %>
+  <br />
 </div>
+<div class="well">
 <h2><%= @day.title %></h2>
 <%= auto_link(@day.intro).html_safe %>
 <br />
@@ -42,3 +50,4 @@
   <hr>
   <br />
   <br />
+</div>

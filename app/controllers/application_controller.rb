@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   def get_users
     @users = User.all
-    @weeks = Week.all
+    @published_weeks = Week.published
   end
 
 end

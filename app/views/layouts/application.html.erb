@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Students002" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Sydney Dev Camp - Student Portal - " + controller_name.titleize %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Students002" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>

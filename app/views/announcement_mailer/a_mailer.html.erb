@@ -6,7 +6,7 @@
   <body>
     <h1><%= @announcement.title %></h1>
     <p>
-      <%= @announcement.body %><br/>
+      <%= auto_link(@announcement.body).html_safe %><br/>
     </p>
     <a href="http://students.sydneydevcamp.com">Visit site now</a>
 

@@ -6,7 +6,7 @@
   <body>
     <h1><%= @post.user.username %> has replied to a post: <%= @post.topic.title %></h1>
     <p>
-      <%= @post.body %><br/>
+      <%= auto_link(@post.body).html_safe %><br/>
     </p>
     <a href="http://students.sydneydevcamp.com<%= topic_path(@post.topic) %>">Visit post now</a>
 

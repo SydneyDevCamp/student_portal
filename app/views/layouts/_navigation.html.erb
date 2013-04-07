@@ -25,12 +25,13 @@
               <li><a href="#"><span class="fui-menu-16"> &nbsp;Course</span></a>
                 
                   <ul>
-                    <li><%= link_to 'Prework', prework_path %></li>
-                    <% if @weeks.count > 0 %>
-                    <% @weeks.each do |week| %>
+                    
+                    <% if @published_weeks.count > 0 %>
+                    <% @published_weeks.each do |week| %>
                       <li><%=link_to 'Week ' + week.number.to_s, week_path(week) %></li>
                     <% end %>
                   <% end %>
+                  <li><%= link_to 'Prework', prework_path %></li>
                 </ul>
                 
               </li>
@@ -49,9 +50,7 @@
                     <li><%= link_to 'Admin', users_path %></li>
                     <li><%= link_to 'Announcements', announcements_path %></li>
                     <li><%= link_to 'Weeks', weeks_path %></li>
-                    <li><%= link_to 'Week Resources', week_resources_path %></li>
                     <li><%= link_to 'Days', days_path %></li>
-                    <li><%= link_to 'Day Resources', day_resources_path %></li>
                   <% end %>
                 </ul>
               </li>

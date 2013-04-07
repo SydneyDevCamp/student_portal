@@ -15,6 +15,7 @@ class WeeksController < ApplicationController
   def show
     @week = Week.find(params[:id])
     @weeks = Week.all
+    @calendar_items = CalendarItem.where("week_id = ?", @week.id)
 
     respond_to do |format|
       format.html # show.html.erb

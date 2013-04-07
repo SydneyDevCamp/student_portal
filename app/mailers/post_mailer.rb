@@ -8,8 +8,9 @@ class PostMailer < ActionMailer::Base
     @topic.posts.each do |post|
       @posters << post.user
     end
+
     @posters_emails = @posters.map { |u| u.email }.uniq
-    mail(:to => @posters_emails, :subject => "Reply to post: " + post.topic.title)
+    mail(:to => @posters_emails, :cc => "peter@sydneydevcamp.com" :subject => "Reply to post: " + post.topic.title)
     
   end
 end

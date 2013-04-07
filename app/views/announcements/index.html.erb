@@ -1,9 +1,10 @@
-<h1>Listing announcements</h1>
-
-<table>
+<h1>Announcements</h1>
+<%= link_to 'New Announcement', new_announcement_path, :class => 'btn' %>
+<br><br>
+<table class="table">
   <tr>
     <th>Title</th>
-    <th>Body</th>
+    <th>Date</th>
     <th>Publish</th>
     <th></th>
     <th></th>
@@ -12,10 +13,9 @@
 
 <% @announcements.each do |announcement| %>
   <tr>
-    <td><%= announcement.title %></td>
-    <td><%= announcement.body %></td>
+    <td><%= link_to announcement.title, announcement %></td>
+    <td><%= announcement.created_at.strftime("%e %b %Y") %></td>
     <td><%= announcement.publish %></td>
-    <td><%= link_to 'Show', announcement %></td>
     <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
     <td><%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Announcement', new_announcement_path %>
+

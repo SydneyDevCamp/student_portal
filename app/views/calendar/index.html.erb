@@ -14,14 +14,18 @@
       <table class="table">
         <thead>
           <tr>
+            <th>Day</th>
             <th>Date</th>
+            <th>Time</th>
             <th>Event</th>
           </tr>
         </thead>
         <tbody>
           <% @calendar_items.each do |ci| %>
             <tr>
+              <td><%= ci.day %></td>
               <td><%= ci.date.strftime("%e %b %Y") %></td>
+              <td><%= ci.time.strftime("%H:%M") %></td>
               <td><%= link_to ci.title, calendar_item_path(ci) %></td>
             </tr>
            <% end %>

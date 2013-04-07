@@ -1,39 +1,41 @@
+<%= content_for :title, "Sydney Dev Camp - Student Portal - Week " + @week.number.to_s + ' ' + @week.title %>
+
 <p id="notice"><%= notice %></p>
+<%= render 'layouts/week_menu' %>
+
 <div class="row">
-  <div class="span12">
-<hr>
-    <% if @week.days %>
+  <div class="span9">
+    
+    <div class="well">
+      <h2>Week <%= @week.number %></h2>
+
+
+      <h1><%= @week.title %></h1>
+
+
+      <%= auto_link(@week.intro.html_safe) %>
+      <br />
+      <hr>
+      <br />
+
+      <h3>Week outline</h3>
       <% @week.days.each do |day| %>
-        <%= link_to 'Day ' + day.number.to_s, day_path(day), :class => 'btn btn-info' %>
+        <h4><b>Day <%= day.number.to_s %>: <%= link_to day.title, day_path(day) %> </b></h4>
+          
       <% end %>
-    <% end %>
-    <hr>
+      <% if current_user.has_role? :admin %>
+          <%= link_to 'Edit Week', edit_week_path(@week), :class => 'btn btn-warning' %>
+          <br><br>
+        <% end %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="span12">
-
-    <h2>Week <%= @week.number %></h2>
-
-
-    <h1><%= @week.title %></h1>
-
-
-    <%= auto_link(@week.intro.html_safe) %>
-    <br />
-    <hr>
-    <br />
-
-    <h3>Week outline</h3>
-    <% @week.days.each do |day| %>
-      <h4><b>Day <%= day.number %>: <%= day.title %></b></h4>
-    <% end %>
-    <% if current_user.has_role? :admin %>
-    <br />
-    <hr>
-    <br />
-      <%= link_to 'Edit Week', edit_week_path(@week), :class => 'btn btn-warning' %>
-    <% end %>
+  <div class="span3">
+    <div class="well">
+      <h3>Week <%= @week.number %> Events</h3>
+      <% @calendar_items.each do |ci| %>
+        <%= link_to ci.title + ' (' + ci.day + ')', ci %><br>
+      <% end %>
+    </div>
   </div>
 </div>
 

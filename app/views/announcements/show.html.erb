@@ -7,7 +7,7 @@
 
 <p>
   <b>Body:</b>
-  <%= @announcement.body %>
+  <%= auto_link(@announcement.body).html_safe %>
 </p>
 
 <p>

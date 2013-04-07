@@ -1,6 +1,6 @@
 <%= simple_form_for(@calendar_item) do |f| %>
   <%= f.error_notification %>
-
+    <%= f.association :week  %>
     <%= f.input :day, :collection => ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'] %>
     <%= f.input :date %>
     <%= f.input :time %>
