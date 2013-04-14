@@ -26,8 +26,10 @@
          <div class="pull-right">
             <%= link_to "Reply", new_topic_post_path(@topic), :class => 'btn btn-info btn-small' %>
             <%= link_to "Quote", new_topic_post_path(@topic, :quote => post), :class => 'btn btn-info btn-small' %>
-            <%= link_to "Edit", edit_post_path(post), :class => 'btn btn-warning btn-small' %>
-            <%= link_to "Delete", post, :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-danger btn-small' %>
+            <% if post.user == current_user %>
+              <%= link_to "Edit", edit_post_path(post), :class => 'btn btn-warning btn-small' %>
+              <%= link_to "Delete", post, :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-danger btn-small' %>
+            <% end %>
           </div>
         </td>
       </tr>
