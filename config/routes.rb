@@ -1,5 +1,8 @@
 Students004::Application.routes.draw do
 
+  resources :resources
+
+
   resources :calendar_items
 
 
@@ -7,9 +10,6 @@ Students004::Application.routes.draw do
   match "calendar" => "calendar#index"
 
   
-
-
-  resources :day_resources
 
 
   resources :days do

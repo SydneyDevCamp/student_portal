@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<div class="well">
+<p>
+  <b>
+  <%= @resource.title %></b>
+</p>
+
+<p>
+  
+  <%= auto_link(@resource.body).html_safe %>
+</p>
+<br>
+<% @resource.topics.each do |topic| %>
+  <%= link_to topic, resources_path(:topic => topic), :class => 'btn' %>
+<% end %>
+</div>
+<p>
+  <b>Added by:</b>
+  <%= @resource.user.try :username %> <small> on <%= @resource.created_at.strftime("%e %b %Y") %></small>
+</p>
+
+
+<%= link_to 'Edit', edit_resource_path(@resource) %> |
+<%= link_to 'Back', resources_path %>

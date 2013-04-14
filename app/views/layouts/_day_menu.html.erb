@@ -6,6 +6,7 @@
         <% @day.week.days.each do |day| %>
           <%= link_to 'Day ' + day.number.to_s, day_path(day), :class => 'btn btn-info' %>
         <% end %>
+        <span class="pull-right"><%= link_to 'Add resource', new_resource_path, :class => 'btn btn-success' %></span>
       <% end %>
     </div>
   </div>

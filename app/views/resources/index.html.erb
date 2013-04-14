@@ -1,0 +1,34 @@
+<h1>Resources </h1>
+
+<% if params[:topic].present? %>
+  <small><%= link_to "clear topic filter", resources_path %></small>
+<% end %>
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Posted by</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @resources.each do |resource| %>
+  <tr>
+    <td width="40%"><%= link_to resource.title, resource %></td>
+    <td><%= resource.user.try :username %></td>
+    <td>
+      <% if resource.topics %>
+        <% resource.topic_list.each do |topic| %>
+          <%= link_to topic, resources_path(:topic => topic) %>
+        <% end %>
+      <% end %>
+    </td>
+    <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
+    <td><%= link_to 'Delete', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Resource', new_resource_path, :class => 'btn btn-success' %>

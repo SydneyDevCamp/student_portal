@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :topics, :dependent => :destroy
   has_many :posts, :dependent => :destroy
   has_one :user_profile
+  has_many :resources
   
   after_create :add_role_to_user
 

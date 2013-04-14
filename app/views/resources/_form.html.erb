@@ -1,0 +1,11 @@
+<%= simple_form_for(@resource) do |f| %>
+  <%= f.error_notification %>
+
+
+    <%= f.input :title, :input_html => { :class => "span7"} %>
+    <%= f.input :body, :as => :text, :input_html => { :rows => 15, :class => "span7 tinymce"} %>
+    <%= f.input :topic_list, :input_html => { :class => "span7"}, :placeholder => "Enter comma separated tags" %>
+
+    <%= f.button :submit %>
+
+<% end %>

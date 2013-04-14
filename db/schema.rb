@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407014353) do
+ActiveRecord::Schema.define(:version => 20130414022054) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -40,18 +40,6 @@ ActiveRecord::Schema.define(:version => 20130407014353) do
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
   end
-
-  create_table "day_resources", :force => true do |t|
-    t.integer  "day_id"
-    t.string   "title"
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "day_resources", ["day_id"], :name => "index_day_resources_on_day_id"
-  add_index "day_resources", ["user_id"], :name => "index_day_resources_on_user_id"
 
   create_table "days", :force => true do |t|
     t.integer  "number"
@@ -117,6 +105,16 @@ ActiveRecord::Schema.define(:version => 20130407014353) do
 
   add_index "prework_questions", ["prework_module_id"], :name => "index_prework_questions_on_prework_module_id"
 
+  create_table "resources", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "resources", ["user_id"], :name => "index_resources_on_user_id"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -138,6 +136,23 @@ ActiveRecord::Schema.define(:version => 20130407014353) do
   end
 
   add_index "sections", ["day_id"], :name => "index_sections_on_day_id"
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "topics", :force => true do |t|
     t.string   "title"
@@ -218,18 +233,6 @@ ActiveRecord::Schema.define(:version => 20130407014353) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
-
-  create_table "week_resources", :force => true do |t|
-    t.integer  "week_id"
-    t.string   "title"
-    t.text     "body"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "week_resources", ["user_id"], :name => "index_week_resources_on_user_id"
-  add_index "week_resources", ["week_id"], :name => "index_week_resources_on_week_id"
 
   create_table "weeks", :force => true do |t|
     t.integer  "number"
