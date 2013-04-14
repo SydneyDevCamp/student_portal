@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
   attr_accessible :role_ids, :as => :admin
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me
 
-  has_many :topics, :dependent => :destroy
-  has_many :posts, :dependent => :destroy
+  has_many :topics
+  has_many :posts
   has_one :user_profile
   has_many :resources
   
