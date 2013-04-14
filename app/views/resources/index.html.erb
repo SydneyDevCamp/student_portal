@@ -3,6 +3,7 @@
 <% if params[:topic].present? %>
   <small><%= link_to "clear topic filter", resources_path %></small>
 <% end %>
+<div class="well">
 <table class="table">
   <tr>
     <th>Title</th>
@@ -28,7 +29,7 @@
   </tr>
 <% end %>
 </table>
-
+</div>
 <br />
 
 <%= link_to 'New Resource', new_resource_path, :class => 'btn btn-success' %>

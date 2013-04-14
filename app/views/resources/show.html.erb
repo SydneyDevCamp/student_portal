@@ -10,7 +10,7 @@
   <%= auto_link(@resource.body).html_safe %>
 </p>
 <br>
-<% @resource.topics.each do |topic| %>
+<% @resource.topic_list.each do |topic| %>
   <%= link_to topic, resources_path(:topic => topic), :class => 'btn' %>
 <% end %>
 </div>
